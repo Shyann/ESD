@@ -1,0 +1,26 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th>Pay-out</th>
+            <th>Income</th>
+            <th>Net</th>
+            <th>Member charge rate</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><c:out value="${sumClaims}" /></td>
+            <td><c:out value="${sumPayments}" /></td>
+            <td><c:out value="${sumPayments - sumClaims}" /></td>
+            <td><c:out value="${sumClaims / numUsers}" /></td>
+            <td>
+                <form action="adminDashboard" method = "post">
+                    <button type="submit" name="chargeMembers" class="btn btn-primary btn-block">Charge Members</button>
+                </form>
+            </td>
+        </tr>
+    </tbody>
+</table>
+            
+

@@ -1,0 +1,23 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th>Username</th>
+            <th>Rationale</th>
+            <th>Amount</th>
+            <th>Status</th>
+            <th>Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        <c:forEach items="${listApprovedClaims}" var="claim">
+            <tr>
+                <td><c:out value="${claim.memberID}" /></td>
+                <td><c:out value="${claim.rationale}" /></td>
+                <td><c:out value="${claim.amount}" /></td>
+                <td><c:out value="${claim.status}" /></td>
+                <td><c:out value="${claim.date}" /></td>
+            </tr>
+        </c:forEach>
+    </tbody>
+</table>
+<p>Individual charge: ${annualMessage}</p>

@@ -1,0 +1,40 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th>Username</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Date of Birth</th>
+            <th>Date of Registration</th>
+            <th>Status</th>
+            <th>Balance</th>
+            <th>Accept Application</th>
+            <th>Reject Application</th>
+        </tr>
+    </thead>
+    <tbody>
+        <c:forEach items="${listProvisionals}" var="member">
+            <tr>
+                <td><c:out value="${member.username}" /></td>
+                <td><c:out value="${member.name}" /></td>
+                <td><c:out value="${member.address}" /></td>
+                <td><c:out value="${member.dob}" /></td>
+                <td><c:out value="${member.dor}" /></td>
+                <td><c:out value="${member.status}" /></td>
+                <td><c:out value="${member.balance}" /></td>
+                <td>
+                    <form action = "adminDashboard" method = "post">
+                        <input type="hidden" name="approveMember" value="${member.username}" />
+                        <button type="submit" class="btn btn-primary btn-block">Approve</button>
+                    </form>
+                </td>
+                <td>
+                    <form action = "adminDashboard" method = "post">
+                        <input type="hidden" name="suspendMember" value="${member.username}" />
+                        <button type="submit" class="btn btn-primary btn-block">Suspend</button>
+                    </form>
+                </td>
+            </tr>
+        </c:forEach>
+    </tbody>
+</table>

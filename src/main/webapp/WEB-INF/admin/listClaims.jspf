@@ -1,0 +1,39 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th>Username</th>
+            <th>Rationale</th>
+            <th>Amount</th>
+            <th>Status</th>
+            <th>Date</th>
+            <th>Approve Claim</th>
+            <th>Reject Claim</th>
+        </tr>
+    </thead>
+    <tbody>
+        <c:forEach items="${listClaims}" var="claim">
+            <tr<c:if test="${claim.validity == false}"> class="danger"</c:if>>
+                <td><c:out value="${claim.memberID}" /></td>
+                <td><c:out value="${claim.rationale}" /></td>
+                <td><c:out value="${claim.amount}" /></td>
+                <td><c:out value="${claim.status}" /></td>
+                <td><c:out value="${claim.date}" /></td>
+                <c:if test="${claim.status == 'SUBMITTED'}">
+                    <td>
+
+                        <form action = "adminDashboard" method = "post">
+                            <input type="hidden" name="approveClaim" value="${claim.id}" />
+                            <button type="submit" class="btn btn-primary btn-block">Approve</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form action = "adminDashboard" method = "post">
+                            <input type="hidden" name="rejectClaim" value="${claim.id}" />
+                            <button type="submit" class="btn btn-primary btn-block">Reject</button>
+                        </form>
+                    </td>
+                </c:if>
+            </tr>
+        </c:forEach>
+    </tbody>
+</table>
